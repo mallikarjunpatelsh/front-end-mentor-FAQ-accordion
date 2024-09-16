@@ -1,0 +1,208 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./assets/images/favicon-32x32.png">
+
+
+  <title>Frontend Mentor | FAQ accordion</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Work+Sans:wght@100..900&display=swap');
+
+    body {
+      height: 100%;
+      min-height: 100vh;
+      font-family: "Work Sans", sans-serif;
+      background-image: url("assets/images/background-pattern-desktop.svg");
+      background-color: hsl(275, 100%, 97%);
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      background-height: 20%;
+      background-repeat: no-repeat;
+    }
+
+    .container {
+      background-color: aliceblue;
+      max-width: 600px;
+      margin: 20px 20px;
+      padding: 20px 30px;
+      border-radius: 20px;
+    }
+
+    p {
+      letter-spacing: 1px;
+      margin: 0px 0px 10px 0px;
+      color: hsl(292, 16%, 49%);
+      font-size: 16px;
+      line-height: 1.6;
+      animation: pFadeIn 0.5s ease-in-out;
+    }
+
+    @keyframes pFadeIn {
+      0% {
+        opacity: 0;
+      }
+
+      100% {
+        opacity: 1;
+      }
+    }
+
+    .header-with-logo {
+      display: flex;
+      gap: 18px;
+      line-height: 0.1px;
+    }
+
+    .header-h1 {
+      font-size: 42px;
+    }
+
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+
+    .faq-item {
+      font-size: 18px;
+      display: flex;
+      justify-content: space-between;
+      margin-top: 10px;
+      letter-spacing: px;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container">
+    <header class="header-with-logo">
+      <img src="./assets/images/icon-star.svg" />
+      <h1 class="header-h1">FAQs</h1>
+    </header>
+
+    <article>
+
+      <div class="faq-item">
+        <h4 class="heading-h6">
+          What is Frontend Mentor, and how will it help me?
+        </h4>
+
+        <img class="first" src="assets/images/icon-plus.svg" onclick="onImageClick(`first`)" />
+      </div>
+      <p class="faq-answer first">
+        Frontend Mentor offers realistic coding challenges to help developers improve their
+        frontend coding skills with projects in HTML, CSS, and JavaScript. It's suitable for
+        all levels and ideal for portfolio building.
+      </p>
+
+      <div class="faq-item">
+        <h4 class="heading-h6">
+          Is Frontend Mentor free?
+        </h4>
+        <img class="second" onclick="onImageClick(`second`)" src="assets/images/icon-plus.svg" />
+      </div>
+      <p class="faq-answer second">
+        Yes, Frontend Mentor offers both free and premium coding challenges, with the free
+        option providing access to a range of projects suitable for all skill levels.
+      </p>
+      <div class="faq-item">
+        <h4 class="heading-h6">Can I use Frontend Mentor projects in my portfolio?</h4>
+        <img onclick="onImageClick(`third`)" class="third" src="assets/images/icon-plus.svg" />
+      </div>
+      <p class="faq-answer third">
+        Yes, you can use projects completed on Frontend Mentor in your portfolio. It's an excellent
+        way to showcase your skills to potential employers!
+      </p>
+      <div class="faq-item">
+        <h4 class="heading-h6">How can I get help if I'm stuck on a Frontend Mentor challenge?</h4>
+        <img class="fourth" src="assets/images/icon-plus.svg" onclick="onImageClick(`fourth`)" />
+      </div>
+      <p class="faq-answer fourth">
+        The best place to get help is inside Frontend Mentor's Discord community. There's a help
+        channel where you can ask questions and seek support from other community members.
+      </p>
+    </article>
+
+  </div>
+</body>
+
+<script>
+  window.onload = onImageClick()
+
+  function android() {
+    console.log("hello")
+  }
+
+  function onImageClick(className) {
+    console.log("hello 1")
+    let first = document.querySelectorAll(".first");
+    let second = document.querySelectorAll(".second");
+    let third = document.querySelectorAll(".third");
+    let fourth = document.querySelectorAll(".fourth");
+    console.log("hello 2")
+    first.forEach(element => {
+      console.log(element.tagName, className, element.style.display);
+      if (className == "first") {
+        showElements(element)
+      } else
+        hideElements(element)
+    });
+    second.forEach(element => {
+      if (className == "second") {
+        showElements(element)
+      } else
+        hideElements(element)
+    });
+    third.forEach(element => {
+      if (className == "third") {
+        showElements(element)
+      } else
+        hideElements(element)
+    });
+    fourth.forEach(element => {
+      if (className == "fourth") {
+        showElements(element)
+      } else
+        hideElements(element)
+    });
+
+  }
+
+  function hideElements(element) {
+    if (element.tagName == "IMG") {
+      element.src = "assets/images/icon-plus.svg"
+    } else {
+      element.style.display = "none"
+    }
+  }
+
+  function showElements(element) {
+    if (element.tagName == "IMG") {
+      console.log(element.src)
+      if (element.getAttribute('src') === "assets/images/icon-minus.svg")
+        element.src = "assets/images/icon-plus.svg"
+      else
+        element.src = "assets/images/icon-minus.svg"
+    } else {
+      if (element.style.display == "none")
+        element.style.display = "block"
+      else
+        element.style.display = "none"
+    }
+  }
+
+</script>
+
+</html>
